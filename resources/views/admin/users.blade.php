@@ -1,7 +1,11 @@
 @extends('layouts.master')
 
 @section('title')
-    Registered Roles| reservation system
+    Registered Roles| Reservation System
+@endsection
+
+@section('name')
+    Users List
 @endsection
 
 @section('content')

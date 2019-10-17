@@ -43,6 +43,7 @@ Route::group(['middleware' => ['auth']], function(){
 
     // haven't created yet 
     Route::get('/flights' ,'Admin\flightsController@show');
+
 });
 
 

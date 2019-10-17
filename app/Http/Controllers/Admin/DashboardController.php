@@ -43,5 +43,4 @@ class DashboardController extends Controller
         return redirect('/users')->with('status', 'The Profile Deleted');
     }
 
-
 }

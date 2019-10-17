@@ -4,12 +4,16 @@
     Edit-Register | reservation system
 @endsection
 
+@section('name')
+    User Edit
+@endsection
+
 @section('content')
     <div class="row">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h3>Edit Role for Registered User</h3>
+                    <h3>Edit Profile</h3>
                 </div>
                 <div class="card-body">
                     <div class="row">

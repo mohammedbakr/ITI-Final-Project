@@ -4,6 +4,10 @@
     Flights | reservation system
 @endsection
 
+@section('name')
+    Flights List
+@endsection
+
 @section('content')
 
 @endsection

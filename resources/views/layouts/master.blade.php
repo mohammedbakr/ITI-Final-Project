@@ -28,14 +28,14 @@
       <!--
         Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
     -->
-      {{-- <div class="logo">
-        <a href="http://www.creative-tim.com" class="simple-text logo-mini">
-          CT
+        <div class="logo">
+        <a href="{{route('home')}}" class="simple-text logo-mini">
+          Go
         </a>
-        <a href="http://www.creative-tim.com" class="simple-text logo-normal">
-          Creative Tim
+        <a href="{{route('home')}}" class="simple-text logo-normal">
+          BlaBla
         </a>
-      </div> --}}
+      </div>
       <div class="sidebar-wrapper" id="sidebar-wrapper">
         <ul class="nav">
           <li class="{{ 'dashboard' == request()->path() ? 'active' : '' }} ">
@@ -95,7 +95,9 @@
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="#">Table List</a>
+            <a class="navbar-brand">
+              @yield('name')
+            </a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -116,9 +118,17 @@
             <ul class="navbar-nav">
               <li class="nav-item">
                 <a class="nav-link" href="#">
-                  <i class="now-ui-icons media-2_sound-wave"></i>
+                  <i class="now-ui-icons ui-1_bell-53"></i>
                   <p>
-                    <span class="d-lg-none d-md-block">Stats</span>
+                    <span class="d-lg-none d-md-block">Notifications</span>
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <i class="now-ui-icons ui-1_email-85"></i>
+                  <p>
+                    <span class="d-lg-none d-md-block">Messages</span>
                   </p>
                 </a>
               </li>
@@ -152,73 +162,18 @@
                   <a class="dropdown-item" href="#">Something else here</a>
                 </div>
               </li> --}}
-              {{-- <li class="nav-item">
-                <a class="nav-link" href="#pablo">
-                  <i class="now-ui-icons users_single-02"></i>
-                  <p>
-                    <span class="d-lg-none d-md-block">Account</span>
-                  </p>
-                </a>
-              </li> --}}
             </ul>
           </div>
         </div>
       </nav>
       <!-- End Navbar -->
-
-
-
-
-      
-
       <div class="panel-header panel-header-sm">
       </div>
+
       <div class="content">
-
             @yield('content')
-
-
-        
       </div>
 
-
-
-
-
-
-
-
-      <footer class="footer">
-        <div class="container-fluid">
-          <nav>
-            <ul>
-              <li>
-                <a href="https://www.creative-tim.com">
-                  Creative Tim
-                </a>
-              </li>
-              <li>
-                <a href="http://presentation.creative-tim.com">
-                  About Us
-                </a>
-              </li>
-              <li>
-                <a href="http://blog.creative-tim.com">
-                  Blog
-                </a>
-              </li>
-            </ul>
-          </nav>
-          <div class="copyright" id="copyright">
-            &copy;
-            <script>
-              document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))
-            </script>, Designed by
-            <a href="https://www.invisionapp.com" target="_blank">Invision</a>. Coded by
-            <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>.
-          </div>
-        </div>
-      </footer>
     </div>
   </div>
   <!--   Core JS Files   -->
