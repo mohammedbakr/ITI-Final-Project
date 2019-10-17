@@ -63,9 +63,9 @@
             </a>
           </li>
           <li class="{{ 'users' == request()->path() ? 'active' : '' }} ">
-            <a href="/users">
+            <a href="{{ route('users') }}">
               <i class="now-ui-icons users_single-02"></i>
-              <p>User Profile</p>
+              <p>Users</p>
             </a>
           </li>
           <li class="{{ 'flights' == request()->path() ? 'active' : '' }} ">

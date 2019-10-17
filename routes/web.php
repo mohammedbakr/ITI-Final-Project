@@ -23,13 +23,13 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 // admin panel (ui kit admin)
-Route::group(['middleware' => ['auth', 'admin']], function(){
+Route::group(['middleware' => ['auth']], function(){
 
     Route::get('/dashboard', function () {
         return view('admin.dashboard');
     });
 
-    Route::get('/users', 'Admin\DashboardController@register');
+    Route::get('/users', 'Admin\DashboardController@register')->name('users');
 
     Route::get('/users/{id}', 'Admin\DashboardController@usersedit');
 
