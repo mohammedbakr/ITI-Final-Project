@@ -16,16 +16,14 @@ class AdminMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::user()->usertype == 'admin')
-        {
+        if(Auth::user()->hasRoles(['admin','author'])){
 
             return $next($request);
+        }
 
-        }
-        else
-        {
-            return redirect('/home')->with('status', 'You Are Not Allowed To Admin Dashboard');
-        }
+        
+        return redirect('/home');
+    
         
     }
 }

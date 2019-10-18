@@ -7,7 +7,7 @@
   <link rel="icon" type="image/png" href="{{asset('assets/img/favicon.png')}}">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    @yield('title')
+    Registered Roles| Reservation System
   </title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
@@ -16,6 +16,7 @@
   <!-- CSS Files -->
   <link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet" />
   <link href="{{asset('assets/css/now-ui-dashboard.css?v=1.3.0')}}" rel="stylesheet" />
+  <link href="{{asset('assets/css/select2.min.css')}}" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="{{asset('assets/demo/demo.css')}}" rel="stylesheet" />
 </head>
@@ -29,22 +30,24 @@
         Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
     -->
         <div class="logo">
-        <a href="{{route('home')}}" class="simple-text logo-mini">
-          Go
-        </a>
+        <!-- <a href="{{route('home')}}" class="simple-text logo-mini">
+          Dash
+        </a> -->
         <a href="{{route('home')}}" class="simple-text logo-normal">
-          BlaBla
+          Home
         </a>
       </div>
       <div class="sidebar-wrapper" id="sidebar-wrapper">
         <ul class="nav">
+
           <li class="{{ 'dashboard' == request()->path() ? 'active' : '' }} ">
-            <a href="/dashboard">
+            <a href="{{ route('dashboard') }}">
               <i class="now-ui-icons design_app"></i>
               <p>Dashboard</p>
             </a>
           </li>
-          <li>
+
+         <!-- <li>
             <a href="./icons.html">
               <i class="now-ui-icons education_atom"></i>
               <p>Icons</p>
@@ -61,23 +64,21 @@
               <i class="now-ui-icons ui-1_bell-53"></i>
               <p>Notifications</p>
             </a>
-          </li>
-          <li class="{{ 'users' == request()->path() ? 'active' : '' }} ">
-            <a href="{{ route('users') }}">
-              <i class="now-ui-icons users_single-02"></i>
-              <p>Users</p>
-            </a>
-          </li>
+          </li> -->
+
+          @hasrole(['admin'])
+            <li class="{{ 'users' == request()->path() ? 'active' : '' }} ">
+              <a href="{{ route('admin.users.index') }}">
+                <i class="now-ui-icons users_single-02"></i>
+                <p>Users</p>
+              </a>
+            </li>
+          @endhasrole
+
           <li class="{{ 'flights' == request()->path() ? 'active' : '' }} ">
             <a href="./flights">
               <i class="now-ui-icons design_bullet-list-67"></i>
-              <p>Flights List</p>
-            </a>
-          </li>
-          <li class="{{ 'aboutus' == request()->path() ? 'active' : '' }} ">
-            <a href="./aboutus">
-              <i class="now-ui-icons text_caps-small"></i>
-              <p>About Us</p>
+              <p>Flights</p>
             </a>
           </li>
         </ul>
@@ -96,7 +97,7 @@
               </button>
             </div>
             <a class="navbar-brand">
-              @yield('name')
+              
             </a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
@@ -171,6 +172,7 @@
       </div>
 
       <div class="content">
+            @include('inc.messages')
             @yield('content')
       </div>
 
@@ -181,6 +183,7 @@
   <script src="{{asset('assets/js/core/popper.min.js')}}"></script>
   <script src="{{asset('assets/js/core/bootstrap.min.js')}}"></script>
   <script src="{{asset('assets/js/plugins/perfect-scrollbar.jquery.min.js')}}"></script>
+  <script src="{{asset('assets/js/select2.min.js')}}"></script>
   <!--  Google Maps Plugin    -->
   <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
   <!-- Chart JS -->

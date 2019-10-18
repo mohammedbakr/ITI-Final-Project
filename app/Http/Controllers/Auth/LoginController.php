@@ -29,9 +29,9 @@ class LoginController extends Controller
     // protected $redirectTo = '/home';
     protected function redirectTo()
     {
-        if(Auth::user()->usertype == 'admin')
+        if(Auth::user()->hasRoles(['admin', 'author']))
         {
-            return 'dashboard'; // in Jason format
+            return '/admin'; // in Jason format
         }
         else
         {
