@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('home');
+// });
 
 
 
@@ -46,6 +46,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 // });
 
+// admin dashboard
 Route::get('/admin', function(){
 
     return view('admin.dashboard');
@@ -57,5 +58,11 @@ Route::namespace('Admin')->prefix('admin')->middleware(['auth', 'admin'])->name(
         Route::resource('/users', 'UsersController')->except(['create', 'store', 'show']);
 });
 
+
+// pages
+Route::get('/', 'pagesController@index')->name('index');
+Route::get('/destination', 'pagesController@destination')->name('destination');
+Route::get('/pricing', 'pagesController@pricing')->name('pricing');
+Route::get('/contact', 'pagesController@contact')->name('contact');
 
 
