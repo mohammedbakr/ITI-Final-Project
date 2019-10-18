@@ -52,4 +52,20 @@ class User extends Authenticatable
             return true;
         }
     }
+
+     public function credits(){
+        return $this->hasMany('App\Credit');
+    }
+
+    public function passengers(){
+        return $this->hasMany('App\Passenger');
+    }
+
+    public function flights(){
+        return $this->belongsToMany('App\Flight');
+    }
+
+    public function history(){
+        return $this->hasOne('App\History');
+    }
 }
