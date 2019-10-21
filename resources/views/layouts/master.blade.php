@@ -75,8 +75,8 @@
             </li>
           @endhasrole
 
-          <li class="{{ 'flights' == request()->path() ? 'active' : '' }} ">
-            <a href="./flights">
+          <li class="{{ 'admin/flights' == request()->path() ? 'active' : '' }} ">
+            <a href="{{ route('admin.flights.index') }}">
               <i class="now-ui-icons design_bullet-list-67"></i>
               <p>Flights</p>
             </a>
@@ -97,7 +97,7 @@
               </button>
             </div>
             <a class="navbar-brand">
-              
+              @yield('name')
             </a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">

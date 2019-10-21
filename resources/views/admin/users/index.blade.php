@@ -1,5 +1,8 @@
 @extends('layouts.master')
 
+@section('name')
+    Users List
+@endsection
 
 @section('content')
 <div class="user">
@@ -10,14 +13,15 @@
             </div>
             <div class="card-body">
               <div class="table-responsive">
-                <table class="table">
-                  <thead class="text-secondary">
+                <table class="table table-striped">
+                  <thead class="text-info">
                     <th>ID</th>
                     <th>Name</th>
                     <th>Phone</th>
                     <th>Email</th>
                     <th>User Roles</th>
-                    <th>Actions</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
                   </thead>
                   <tbody>
                     @foreach ($users as $user)
@@ -30,8 +34,9 @@
                           <td>{{ implode(',', $user->roles()->get()->pluck('name')->toArray() ) }}</td>
                           <td>
                             <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-success btn-sm">EDIT</a>
-
-                            <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST" class="float-right">
+                          </td>
+                          <td>
+                            <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST">
                               @csrf
                               @method('delete')
                               <button type="submit" class="btn btn-danger btn-sm">DELETE</button>

@@ -44,13 +44,12 @@
                                     </select>
                                 </div>
                                 
-                                <button type="submit" class="btn btn-success">Update</button>
+                                <button type="submit" class="btn btn-success float-left">Update</button>
                             </form>
-                            <form class="form-group" action="{{ route('admin.users.index')}}" method="POST">
+                            <form class="form-group" action="{{ route('admin.users.index')}}" method="post">
                                 @csrf
                                 @method('get')
-                                <button type="submit" class="btn btn-danger">Cancel</button>
-                                {{-- <a href="{{ route('admin.users.index')}}"><button type="submit" class="btn btn-danger">Cancel</button></a> --}}
+                                <button type="submit" class="btn btn-danger float-right">Cancel</button>
                             </form>
                         </div>
                     </div>
