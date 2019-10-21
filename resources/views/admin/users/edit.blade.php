@@ -44,13 +44,12 @@
                                     </select>
                                 </div>
                                 
-                                <button type="submit" class="btn btn-success float-right">Update</button>
+                                <button type="submit" class="btn btn-success float-left">Update</button>
                             </form>
                             <form class="form-group" action="{{ route('admin.users.index')}}" method="post">
                                 @csrf
                                 @method('get')
-                                <button type="submit" class="btn btn-danger float-left">Cancel</button>
-                            
+                                <button type="submit" class="btn btn-danger float-right">Cancel</button>
                             </form>
                         </div>
                     </div>

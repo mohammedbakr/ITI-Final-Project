@@ -11,11 +11,6 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('home');
-// });
-
-
 
 Auth::routes(['verify' => true]);
 
@@ -33,6 +28,7 @@ Route::get('/admin', function(){
 
 Route::namespace('Admin')->prefix('admin')->middleware(['auth', 'admin'])->name('admin.')->group(function(){
         Route::resource('/users', 'UsersController')->except(['create', 'store', 'show']);
+        Route::resource('/flights' ,'FlightsController')->except(['create', 'store', 'show', 'edit', 'update']);
 });
 
 // Home Page
@@ -44,8 +40,3 @@ Route::middleware('verified')->group(function(){
 	Route::get('/pricing', 'pagesController@pricing')->name('pricing');
 	Route::get('/contact', 'pagesController@contact')->name('contact');
 });
-
-// pages
-
-
-
