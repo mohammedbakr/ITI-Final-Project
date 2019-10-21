@@ -30,17 +30,17 @@
         Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
     -->
         <div class="logo">
-        <!-- <a href="{{route('home')}}" class="simple-text logo-mini">
-          Dash
-        </a> -->
+        <a href="{{route('home')}}" class="simple-text logo-mini">
+          Go
+        </a>
         <a href="{{route('home')}}" class="simple-text logo-normal">
-          Home
+          {{ config('app.name', 'Laravel') }}
         </a>
       </div>
       <div class="sidebar-wrapper" id="sidebar-wrapper">
         <ul class="nav">
 
-          <li class="{{ 'dashboard' == request()->path() ? 'active' : '' }} ">
+          <li class="{{ 'admin' == request()->path() ? 'active' : '' }} ">
             <a href="{{ route('dashboard') }}">
               <i class="now-ui-icons design_app"></i>
               <p>Dashboard</p>
@@ -67,7 +67,7 @@
           </li> -->
 
           @hasrole(['admin'])
-            <li class="{{ 'users' == request()->path() ? 'active' : '' }} ">
+            <li class="{{ 'admin/users' == request()->path() ? 'active' : '' }} ">
               <a href="{{ route('admin.users.index') }}">
                 <i class="now-ui-icons users_single-02"></i>
                 <p>Users</p>

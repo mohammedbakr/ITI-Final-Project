@@ -18,7 +18,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-8">
-                            <form action="{{ route('admin.users.update', $user->id) }}" method="POST">
+                            <form class="form-group" action="{{ route('admin.users.update', $user->id) }}" method="POST">
                                 @csrf
                                 @method('put')
                                 <div class="form-group">
@@ -35,7 +35,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Roles</label>
-                                    <select class="form-control roles" multiple="" name="roles[]">
+                                    <select class="form-control roles " multiple="" name="roles[]">
                                         @foreach($roles as $role)
                                     
                                             <option value="{{ $role->id }}">{{ $role->name }}</option>
@@ -44,8 +44,13 @@
                                     </select>
                                 </div>
                                 
-                                <button type="submit" class="btn btn-success">Update</button>
-                                <a href="/users" class="btn btn-danger">Cancel</a>
+                                <button type="submit" class="btn btn-success float-right">Update</button>
+                            </form>
+                            <form class="form-group" action="{{ route('admin.users.index')}}" method="post">
+                                @csrf
+                                @method('get')
+                                <button type="submit" class="btn btn-danger float-left">Cancel</button>
+                            
                             </form>
                         </div>
                     </div>

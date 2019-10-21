@@ -30,13 +30,12 @@ class LoginController extends Controller
     protected function redirectTo()
     {
         if(Auth::user()->hasRoles(['admin', 'author']))
-        {
-            return '/admin'; // in Jason format
-        }
-        else
-        {
-            return 'home';
-        }
+            {
+                return '/admin'; 
+
+            } else {
+                return 'home';
+            }
     }
 
     /**
