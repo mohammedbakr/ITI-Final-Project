@@ -36,7 +36,5 @@ Route::get('/', 'pagesController@index')->name('index');
 
 Route::middleware('verified')->group(function(){
 
-	Route::get('/destination', 'pagesController@destination')->name('destination');
-	Route::get('/pricing', 'pagesController@pricing')->name('pricing');
 	Route::get('/contact', 'pagesController@contact')->name('contact');
 });

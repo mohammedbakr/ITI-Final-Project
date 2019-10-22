@@ -84,8 +84,8 @@ class FlightsController extends Controller
 
             'from' => 'required',
             'to' => 'required',
-            'departure_date' => 'required' ,
-            'arrival_date' => 'required',
+            'departure_date' => 'required | date' ,
+            'arrival_date' => 'required | date',
             'price' => 'required',
 
         ]);
