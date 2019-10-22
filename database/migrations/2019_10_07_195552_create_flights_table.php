@@ -17,10 +17,11 @@ class CreateFlightsTable extends Migration
             $table->bigIncrements('id');
             $table->string('from');
             $table->string('to');
-            $table->date('depature_date');
-            $table->date('arrivale_date');
-            $table->unsignedInteger('seats');
-            $table->unsignedBigInteger('duration');
+            $table->date('departure_date');
+            $table->date('arrival_date');
+            $table->integer('price');
+            $table->unsignedInteger('seats')->nullable();
+            $table->unsignedBigInteger('duration')->nullable();
             $table->string('airline_name')->default('bla');
             $table->timestamps();
         });

@@ -17,7 +17,6 @@ class CreateFlightDetailsTable extends Migration
             $table->bigIncrements('id');
             $table->time('time');
             $table->unsignedBigInteger('flight_id');
-            $table->unsignedBigInteger('price');
             $table->integer('seats');
             $table->timestamps();
 

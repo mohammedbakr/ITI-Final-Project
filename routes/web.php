@@ -28,7 +28,7 @@ Route::get('/admin', function(){
 
 Route::namespace('Admin')->prefix('admin')->middleware(['auth', 'admin'])->name('admin.')->group(function(){
         Route::resource('/users', 'UsersController')->except(['create', 'store', 'show']);
-        Route::resource('/flights' ,'FlightsController')->except(['create', 'store', 'show', 'edit', 'update']);
+        Route::resource('/flights' ,'FlightsController')->except(['create', 'show']);
 });
 
 // Home Page
