@@ -111,6 +111,7 @@
 																<option value="0">0</option>
 																<option value="1">1</option>
 																<option value="2">2</option>
+																<option value="3">3</option>
 															</select>
 														</div>
 													</div>
@@ -135,7 +136,7 @@
 		</div>
 	</header>
 	
-	<div class="gtco-section">
+	<div class="gtco-section" id="trips">
 		<div class="gtco-container">
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2 text-center gtco-heading">
@@ -231,49 +232,6 @@
 			</div>
 		</div>
 	</div>
-	
-	<div id="gtco-features">
-		<div class="gtco-container">
-			<div class="row">
-				<div class="col-md-8 col-md-offset-2 text-center gtco-heading animate-box">
-					<h2>How It Works</h2>
-					<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-4 col-sm-6">
-					<div class="feature-center animate-box" data-animate-effect="fadeIn">
-						<span class="icon">
-							<i>1</i>
-						</span>
-						<h3>Lorem ipsum dolor sit amet</h3>
-						<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
-					</div>
-				</div>
-				<div class="col-md-4 col-sm-6">
-					<div class="feature-center animate-box" data-animate-effect="fadeIn">
-						<span class="icon">
-							<i>2</i>
-						</span>
-						<h3>Consectetur adipisicing elit</h3>
-						<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
-					</div>
-				</div>
-				<div class="col-md-4 col-sm-6">
-					<div class="feature-center animate-box" data-animate-effect="fadeIn">
-						<span class="icon">
-							<i>3</i>
-						</span>
-						<h3>Dignissimos asperiores vitae</h3>
-						<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
-					</div>
-				</div>
-				
-
-			</div>
-		</div>
-	</div>
-
 
 	<div class="gtco-cover gtco-cover-sm" style="background-image: url(images/img_bg_1.jpg)"  data-stellar-background-ratio="0.5">
 		<div class="overlay"></div>
