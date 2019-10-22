@@ -15,11 +15,25 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         if(Auth::user()->hasRole('admin')){
 
-            return view('admin.users.index')->with('users', User::paginate(10));
+            if($request->search){
+
+                $users = User::when($request->search, function($q) use ($request){
+
+                    return $q->where('name', 'like' , '%' . $request->search . '%');
+
+                })->latest()->paginate(4);
+
+                return view('admin.users.index', compact('users'));
+
+
+            } else {
+
+                return view('admin.users.index')->with('users', User::paginate(10));
+            }
             
         } else {
 

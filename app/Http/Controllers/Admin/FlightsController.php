@@ -13,12 +13,27 @@ class FlightsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
 
-        $flight = Flight::latest()->paginate(5);
+        if($request->search){
 
-        return view('admin.flights', compact('flight'));
+                $flight = Flight::when($request->search, function($q) use ($request){
+
+                    return $q->where('from', 'like' , '%' . $request->search . '%');
+
+                })->latest()->paginate(4);
+
+                return view('admin.flights', compact('flight'));
+
+            } else {
+
+                $flight = Flight::latest()->paginate(5);
+
+                return view('admin.flights', compact('flight'));
+            }
+
+        
     }
 
     /**

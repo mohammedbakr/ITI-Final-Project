@@ -4,6 +4,22 @@
     Users List
 @endsection
 
+
+@section('form')
+
+  <form method="get" action="{{ route('admin.users.index') }}">
+    <div class="input-group no-border">
+        <input type="text" value="{{ request()->search }}" class="form-control" placeholder="Search..." name="search">
+        <div class="input-group-append">
+          <div class="input-group-text">
+            <i class="now-ui-icons ui-1_zoom-bold"></i>
+          </div>
+        </div>
+    </div>
+  </form>
+
+@endsection
+
 @section('content')
 <div class="user">
         <div class="col-md-12">
