@@ -27,11 +27,11 @@
                             </div>
                             <div class="form-group">
                                 <label>DEPARTURE DATE</label>
-                                <input type="text" name="departure_date" value="{{ $flight->departure_date }}" class="form-control">
+                                <input type="text" name="departure_date" value="{{ $flight->departure_date }}" class="form-control" placeholder="YYYY/MM/DD" pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))">
                             </div>
                             <div class="form-group">
                                 <label>ARRIVAL DATE</label>
-                                <input type="text" name="arrival_date" value="{{ $flight->arrival_date }}" class="form-control">
+                                <input type="text" name="arrival_date" value="{{ $flight->arrival_date }}" class="form-control" placeholder="YYYY/MM/DD" pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))">
                             </div>
                             <div class="form-group">
                                 <label>PRICE</label>
