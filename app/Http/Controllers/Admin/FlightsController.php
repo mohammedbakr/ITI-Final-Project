@@ -84,19 +84,14 @@ class FlightsController extends Controller
 
             'from' => 'required',
             'to' => 'required',
-            'departure_date' => 'required' ,
-            'arrival_date' => 'required',
+            'departure_date' => 'required | date' ,
+            'arrival_date' => 'required | date',
             'price' => 'required',
 
         ]);
 
         $flight = Flight::find($id);
-        $flight->from = $request->input('from');
-        $flight->to = $request->input('to');
-        $flight->departure_date = $request->input('departure_date');
-        $flight->arrival_date = $request->input('arrival_date');
-        $flight->price = $request->input('price');
-        $flight->save();
+        $flight->update($request->all());
 
         return redirect()->route('admin.flights.index')->with('success', 'Flight Updated successfully');
     }

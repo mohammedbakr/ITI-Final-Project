@@ -47,11 +47,11 @@
                 </div>
                 <div class="form-group">
                   <label for="departure_date" class="col-form-label">DEPARTURE DATE:</label>
-                  <input type="text" class="form-control" id="departure_date" name="departure_date">
+                  <input type="text" class="form-control" id="departure_date" name="departure_date" placeholder="YYYY/MM/DD" pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))">
                 </div>
                 <div class="form-group">
                   <label for="arrival_date" class="col-form-label">ARRIVAL DATE:</label>
-                  <input type="text" class="form-control" id="arrival_date" name="arrival_date">
+                  <input type="text" class="form-control" id="arrival_date" name="arrival_date" placeholder="YYYY/MM/DD" pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))">
                 </div>
                 <div class="form-group">
                   <label for="price" class="col-form-label">PRICE:</label>
