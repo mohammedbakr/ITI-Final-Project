@@ -122,15 +122,11 @@
 												</div>
 											  </form>
 										</div>
-
-										
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-							
-					
 				</div>
 			</div>
 		</div>
@@ -279,15 +275,9 @@
 					<div class="feature-center">
 						<span class="counter js-counter" data-from="0" data-to="12202" data-speed="5000" data-refresh-interval="50">1</span>
 						<span class="counter-label">Happy Customer</span>
-
 					</div>
 				</div>
-					
 			</div>
 		</div>
 	</div>
-
-	
-
-	
 @endsection

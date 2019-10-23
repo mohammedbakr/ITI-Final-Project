@@ -15,6 +15,7 @@ $factory->define(Flight::class, function (Faker $faker) {
         'from' => $faker->city,
         'to' => $faker->city,
         'departure_date' => $faker->dateTimeThisMonth($max = 'now'),
+        'time' => $faker->time($format = 'H:i'),
         'arrival_date' => $faker->dateTimeInInterval($startDate = '0 years', $interval = '+ 5 days'),
         'price' => $faker->numberBetween(200,500),
     ];

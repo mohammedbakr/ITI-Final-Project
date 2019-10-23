@@ -28,7 +28,7 @@ class FlightsController extends Controller
 
             } else {
 
-                $flight = Flight::latest()->paginate(5);
+                $flight = Flight::latest()->paginate(6);
 
                 return view('admin.flights.index', compact('flight'));
             }
@@ -48,8 +48,9 @@ class FlightsController extends Controller
             'from' => 'required',
             'to' => 'required',
             'departure_date' => 'required | date' ,
-            'arrival_date' => 'required | date',
+            'time' => 'required',
             'price' => 'required',
+            'seats' => 'required',
 
         ]);
 
@@ -85,8 +86,9 @@ class FlightsController extends Controller
             'from' => 'required',
             'to' => 'required',
             'departure_date' => 'required | date' ,
-            'arrival_date' => 'required | date',
+            'time' => 'required',
             'price' => 'required',
+            'seats' => 'required',
 
         ]);
 

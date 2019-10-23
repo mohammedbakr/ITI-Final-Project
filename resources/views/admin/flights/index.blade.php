@@ -47,23 +47,23 @@
                 </div>
                 <div class="form-group">
                   <label for="departure_date" class="col-form-label">DEPARTURE DATE:</label>
-<<<<<<< HEAD
                   <input type="text" class="form-control" id="departure_date" name="departure_date" placeholder="YYYY/MM/DD" pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))" >
+                </div>
+                <div class="form-group">
+                  <label for="time" class="col-form-label">TIME:</label>
+                  <input type="text" class="form-control" id="time" name="time">
                 </div>
                 <div class="form-group">
                   <label for="arrival_date" class="col-form-label">ARRIVAL DATE:</label>
                   <input type="text" class="form-control" id="arrival_date" name="arrival_date"  placeholder="YYYY/MM/DD" pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))" >
-=======
-                  <input type="text" class="form-control" id="departure_date" name="departure_date" placeholder="YYYY/MM/DD" pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))">
-                </div>
-                <div class="form-group">
-                  <label for="arrival_date" class="col-form-label">ARRIVAL DATE:</label>
-                  <input type="text" class="form-control" id="arrival_date" name="arrival_date" placeholder="YYYY/MM/DD" pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))">
->>>>>>> a0da59d25a33e1b55f334410b91d1292a5a708bc
                 </div>
                 <div class="form-group">
                   <label for="price" class="col-form-label">PRICE:</label>
                   <input type="text" class="form-control" id="price" name="price">
+                </div>
+                <div class="form-group">
+                  <label for="seats" class="col-form-label">seats:</label>
+                  <input type="text" class="form-control" id="seats" name="seats">
                 </div>
             </div>
             <div class="modal-footer">
@@ -90,8 +90,10 @@
                 <th>Form</th>
                 <th>To</th>
                 <th>Departure Date</th>
+                <th>Time</th>
                 <th>Arrival Date</th>
                 <th>Price</th>
+                <th>Seats</th>
                 <th>Edit</th>
                 <th>Delete</th>
 
@@ -104,8 +106,10 @@
                   <td>{{$flights->from}}</td>
                   <td>{{$flights->to}}</td>
                   <td>{{$flights->departure_date}}</td>
+                  <td>{{$flights->time}}</td>
                   <td>{{$flights->arrival_date}}</td>
                   <td>{{$flights->price}}$</td>
+                  <td>{{$flights->seats}}</td>
                   <td>
                     <a href="{{ route('admin.flights.edit', $flights->id) }}" class="btn btn-success btn-sm">EDIT</a>
                   </td>
