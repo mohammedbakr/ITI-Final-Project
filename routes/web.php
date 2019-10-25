@@ -32,9 +32,14 @@ Route::namespace('Admin')->prefix('admin')->middleware(['auth', 'admin'])->name(
 });
 
 // Home Page
-Route::get('/', 'pagesController@index')->name('index');
+Route::get('/', 'Users\FlightsController@index')->name('index');
+Route::get('/dests', 'Users\FlightsController@destination')->name('dests');
+Route::get('/deps', 'Users\FlightsController@departure')->name('deps');
+Route::post('/data', 'Users\FlightsController@store')->name('data');
 
 Route::middleware('verified')->group(function(){
 
+	// contact page
 	Route::get('/contact', 'pagesController@contact')->name('contact');
+	
 });

@@ -45,7 +45,7 @@
     <div id="page">
         <nav class="gtco-nav" role="navigation">
             <div class="gtco-container">
-                
+
                 <div class="row">
                     <div class="col-sm-4 col-xs-12">
                         <div id="gtco-logo"><a class="navbar-brand" href="{{ url('/') }}">
@@ -71,31 +71,31 @@
                                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                         {{ Auth::user()->name }} <span class="caret"></span>
                                     </a>
-    
+
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                         <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                                         document.getElementById('logout-form').submit();">
                                             {{ __('Logout') }}
                                         </a>
-    
+
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                             @csrf
                                         </form>
                                     </div>
                                 </li>
                             @endguest
-                        </ul>	
+                        </ul>
                     </div>
                 </div>
-                
+
             </div>
-        </nav> 
+        </nav>
 
         <main class="py-4">
             @yield('content')
         </main>
-        
+
         <div id="gtco-subscribe">
             <div class="gtco-container">
                 <div class="row animate-box">
@@ -124,14 +124,14 @@
         <footer id="gtco-footer" role="contentinfo">
             <div class="gtco-container">
                 <div class="row row-p	b-md">
-        
+
                     <div class="col-md-4">
                         <div class="gtco-widget">
                             <h3 id="aboutus">About Us</h3>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore eos molestias quod sint ipsum possimus temporibus officia iste perspiciatis consectetur in fugiat repudiandae cum. Totam cupiditate nostrum ut neque ab?</p>
                         </div>
                     </div>
-        
+
                     <div class="col-md-2 col-md-push-1">
                         <div class="gtco-widget">
                             <h3>Destination</h3>
@@ -144,7 +144,7 @@
                             </ul>
                         </div>
                     </div>
-        
+
                     <div class="col-md-2 col-md-push-1">
                         <div class="gtco-widget">
                             <h3>Hotels</h3>
@@ -157,7 +157,7 @@
                             </ul>
                         </div>
                     </div>
-        
+
                     <div class="col-md-3 col-md-push-1">
                         <div class="gtco-widget">
                             <h3>Get In Touch</h3>
@@ -168,9 +168,9 @@
                             </ul>
                         </div>
                     </div>
-        
+
                 </div>
-        
+
                 <div class="row copyright">
                     <div class="col-md-12">
                         <p class="pull-right">
@@ -183,12 +183,12 @@
                         </p>
                     </div>
                 </div>
-        
+
             </div>
         </footer>
         <div class="gototop js-top">
             <a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
-        </div>	
+        </div>
     </div>
 
     <!-- jQuery -->
@@ -210,11 +210,13 @@
 	<!-- Magnific Popup -->
 	<script src="js/jquery.magnific-popup.min.js"></script>
 	<script src="js/magnific-popup-options.js"></script>
-	
+
 	<!-- Datepicker -->
 	<script src="js/bootstrap-datepicker.min.js"></script>
-	
+
 	<!-- Main -->
 	<script src="js/main.js"></script>
-</body>
+
+    @yield('script')
+	</body>
 </html>

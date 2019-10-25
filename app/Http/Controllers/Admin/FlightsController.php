@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Flight;
+use App\Booking;
 
 class FlightsController extends Controller
 {
@@ -49,12 +50,26 @@ class FlightsController extends Controller
             'to' => 'required',
             'departure_date' => 'required | date' ,
             'time' => 'required',
-            'price' => 'required',
-            'seats' => 'required',
+            'price' => 'required'
 
         ]);
 
-        Flight::create($request->all());
+        $booking = new Booking;
+        $seats = $booking->seats;
+
+        $flight = new Flight;
+        $flight->from = $request->input('from');
+        $flight->to = $request->input('to');
+        $flight->departure_date = $request->input('departure_date');
+        $flight->time = $request->input('time');
+        $flight->price = $request->input('price');
+        $flight->arrival_date = $request->input('arrival_date');
+        $flight->available_seats = 100 - $seats;
+
+        $flight->save();
+
+        
+        
 
         return redirect()->route('admin.flights.index')->with('success', 'Flight Added Successfully');
     }
@@ -88,7 +103,6 @@ class FlightsController extends Controller
             'departure_date' => 'required | date' ,
             'time' => 'required',
             'price' => 'required',
-            'seats' => 'required',
 
         ]);
 

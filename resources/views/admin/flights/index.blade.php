@@ -61,10 +61,7 @@
                   <label for="price" class="col-form-label">PRICE:</label>
                   <input type="text" class="form-control" id="price" name="price">
                 </div>
-                <div class="form-group">
-                  <label for="seats" class="col-form-label">seats:</label>
-                  <input type="text" class="form-control" id="seats" name="seats">
-                </div>
+                
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -93,7 +90,7 @@
                 <th>Time</th>
                 <th>Arrival Date</th>
                 <th>Price</th>
-                <th>Seats</th>
+                <th>available_seats</th>
                 <th>Edit</th>
                 <th>Delete</th>
 
@@ -109,7 +106,7 @@
                   <td>{{$flights->time}}</td>
                   <td>{{$flights->arrival_date}}</td>
                   <td>{{$flights->price}}$</td>
-                  <td>{{$flights->seats}}</td>
+                  <td>{{$flights->available_seats}}</td>
                   <td>
                     <a href="{{ route('admin.flights.edit', $flights->id) }}" class="btn btn-success btn-sm">EDIT</a>
                   </td>

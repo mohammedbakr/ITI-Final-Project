@@ -40,10 +40,6 @@
                             <div class="form-group">
                                 <label>PRICE</label>
                                 <input type="text" name="price" value="{{ $flight->price }}" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label>SEATS</label>
-                                <input type="text" name="seats" value="{{ $flight->seats }}" class="form-control">
                             </div>                             
                             <button type="submit" class="btn btn-success float-left">Update</button>
                         </form>

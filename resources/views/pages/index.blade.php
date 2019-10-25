@@ -10,7 +10,7 @@
 
 					<div class="row row-mt-15em">
 						<div class="col-md-7 mt-text animate-box" data-animate-effect="fadeInUp">
-							<h1>Planing Trip To Anywhere in The World?</h1>	
+							
 						</div>
 						<div class="col-md-4 col-md-push-1 animate-box" data-animate-effect="fadeInRight">
 							<div class="form-wrap">
@@ -19,108 +19,127 @@
 									<div class="tab-content">
 										<div class="tab-content-inner active" data-content="signup">
 											<h3>Book Your Trip</h3>
-											<form action="/detail/{id}" class="probootstrap-form">
-												@csrf
+											<form class="probootstrap-form" id="BookingForm">
+
+												<p class="alert alert-success" id="success"></p>
+
+												<input type="hidden" id="flightId">
+												
 												<div class="form-group">
 												  <div class="row mb-3">
+													
 													<div class="col-md">
 													  <div class="form-group">
-														<label for="id_label_single">From</label>
-								  
-														<label for="id_label_single" style="width: 100%;">
-														  <select class="js-example-basic-single js-states form-control" name="from" id="id_label_single" style="width: 100%;">
-															<option value="Australia">Australia</option>
-															<option value="Japan">Japan</option>
-															<option value="United States">United States</option>
-															<option value="Brazil">Brazil</option>
-															<option value="China">China</option>
-															<option value="Israel">Egypt</option>
-															<option value="Philippines">Philippines</option>
-															<option value="Malaysia">Malaysia</option>
-															<option value="Canada">Canada</option>
-															<option value="Chile">Chile</option>
-															<option value="Chile">Zimbabwe</option>
-														  </select>
-														</label>
-								  
-								  
-													  </div>
-													</div>
-													<div class="col-md">
-													  <div class="form-group">
-														<label for="id_label_single2">To</label>
+														<label for="id_label_single2">From</label>
+
 														<div class="probootstrap_select-wrap">
-														  <label for="id_label_single2" style="width: 100%;">
-														  <select class="js-example-basic-single js-states form-control" name="to" id="id_label_single2" style="width: 100%;">
-															<option value="Australia">Australia</option>
-															<option value="Japan">Japan</option>
-															<option value="United States">United States</option>
-															<option value="Brazil">Brazil</option>
-															<option value="China">China</option>
-															<option value="Israel">Egypt</option>
-															<option value="Philippines">Philippines</option>
-															<option value="Malaysia">Malaysia</option>
-															<option value="Canada">Canada</option>
-															<option value="Chile">Chile</option>
-															<option value="Chile">Zimbabwe</option>
+														  <label for="from" style="width: 100%;">
+														  <select class="js-example-basic-single js-states form-control" name="from" style="width: 100%;" id="selectFrom" >
+
+															<option value="">Select Start</option>
+
+														  	@foreach($starts as $start)
+																<option value="{{ $start }}">{{ $start }}</option>
+
+														  	@endforeach
+															
 														  </select>
 														</label>
 														</div>
 													  </div>
 													</div>
+
+													<div class="col-md">
+													  <div class="form-group">
+														<label for="to">To</label>
+
+														<div class="probootstrap_select-wrap">
+														  <label for="to" style="width: 100%;">
+															
+									
+																<select class="js-example-basic-single js-states form-control" name="to" style="width: 100%;" id="selectTo" >
+
+																</select>					  	
+															
+														  
+														</label>
+														</div>
+													  </div>
+													</div>
+													
 												  </div>
 												  <!-- END row -->
 												  <div class="row mb-5">
-													<div class="col-md">
-													  <div class="form-group">
-														<label for="probootstrap-date-departure">Departure</label>
-														<div class="probootstrap-date-wrap">
-														  <span class="icon ion-calendar"></span> 
-														  <input type="text" id="probootstrap-date-departure" name="departure_date" class="form-control" placeholder="">
+													  {{-- departure --}}
+														<div class="col-md">
+														  <div class="form-group">
+															<label for="probootstrap-date-departure">Departure</label>
+															<div class="probootstrap-date-wrap">
+															  <span class="icon ion-calendar"></span> 
+															  <input type="text" id="departure" name="departure_date" class="form-control" placeholder="">
+															</div>
+														  </div>
 														</div>
-													  </div>
-													</div>
-													<div class="col-md">
-													  <div class="form-group">
-														<label for="probootstrap-date-arrival">Arrival</label>
-														<div class="probootstrap-date-wrap">
-														  <span class="icon ion-calendar"></span> 
-														  <input type="text" id="probootstrap-date-arrival" name="arrival_date" class="form-control" placeholder="">
+														{{-- end of departure --}}
+
+														{{-- Arrival --}}
+														<div class="col-md">
+														  <div class="form-group">
+															<label for="probootstrap-date-arrival">Arrival</label>
+															<div class="probootstrap-date-wrap">
+															  <span class="icon ion-calendar"></span> 
+															  <input type="text" id="arrival" name="arrival_date" class="form-control" placeholder="">
+															</div>
+														  </div>
 														</div>
-													  </div>
+														{{-- Arrival --}}
+
+														{{-- price --}}
+														<div class="col-md">
+																<div class="form-group">
+																  <label for="probootstrap-date-arrival">Seat Price</label>
+																  <div class="probootstrap-date-wrap">
+																	<span class="icon ion-calendar"></span> 
+																	<input type="text" id="price" name="price" class="form-control" placeholder="">
+																  </div>
+																</div>
+														</div>
 													</div>
-												  </div>
 												  <!-- END row -->
 												  <div class="row">
-													<div class="col-md">
-														<div class="form-group">
-															<label for="id_label_single">Adults</label>
-															<label for="id_label_single" style="width: 100%;">
-															<select class="js-example-basic-single js-states form-control" name="adults" id="id_label_single" style="width: 100%;">
-																<option value="1">1</option>
-																<option value="2">2</option>
-																<option value="3">3</option>
-															</select>
+														{{-- <div class="col-md">
+															<div class="form-group">
+																<label for="id_label_single">Adults</label>
+																<label for="adults" style="width: 100%;">
+																<input 
+																type="number" min="1" class="js-example-basic-single js-states form-control" name="adults" id="adults" style="width: 100%;">
+																			
+															</div>
+														</div> --}}
+														{{-- <div class="col-md">
+															<div class="form-group">
+																<label for="id_label_single">Children</label>
+																<label for="id_label_single" style="width: 100%;">
+																<input 
+																type="number" min="1" class="js-example-basic-single js-states form-control" name="children" id="children" style="width: 100%;">			
+																
+															</div>
+														</div> --}}
+														<div class="col-md">
+																<div class="form-group">
+																	<label for="id_label_single">Seats</label>
+																	<label for="seats" style="width: 100%;">
+																	<input 
+																	type="number" min="1" class="js-example-basic-single js-states form-control" name="seats" id="seats" style="width: 100%;">			
+																	
+																</div>
+														</div>
+														<div class="col-md">
+														  <input type="submit" value="Submit" class="btn btn-primary btn-block" id="submit">
 														</div>
 													</div>
-													<div class="col-md">
-														<div class="form-group">
-															<label for="id_label_single">Children</label>
-															<label for="id_label_single" style="width: 100%;">
-															<select class="js-example-basic-single js-states form-control" name="children" id="id_label_single" style="width: 100%;">
-																<option value="0">0</option>
-																<option value="1">1</option>
-																<option value="2">2</option>
-																<option value="3">3</option>
-															</select>
-														</div>
-													</div>
-													<div class="col-md">
-													  <input type="submit" value="Submit" class="btn btn-primary btn-block">
-													</div>
-												  </div>
 												</div>
-											  </form>
+											</form>
 										</div>
 									</div>
 								</div>
@@ -280,4 +299,62 @@
 			</div>
 		</div>
 	</div>
+@endsection
+
+
+
+@section('script')
+
+	
+	<script>
+			$('#selectFrom').on('change', function () {
+				let from = $(this).val();
+				
+				$.get('{{route("dests")}}?from='+from, function(res) {
+					let ops = '<option value="0">Select Destination</option>';
+					for (let i=0; i <res.length; i++){
+						ops += '<option value="'+res[i]+'">'+res[i]+'</option>';
+					}
+					$('#selectTo').html(ops);
+				});
+
+				
+			});
+
+
+			$('#selectTo').on('change', function () {
+				let to = $(this).val();
+				let from = $('#selectFrom').val();
+				$.get('{{route("deps")}}?from='+from+'&to='+to, function(res){
+					$('#departure').val(res.departure_date + ' : ' + res.time);
+					$('#arrival').val(res.arrival_date);
+					$('#price').val(res.price);
+					$('#flightId').val(res.id);
+				})
+
+			});
+
+			$('#BookingForm').submit(function(e){
+					$.post("{{route('data')}}", {'seats':$('input[name=seats]').val(), 'flight_id':$('#flightId').val()}
+					).done(function(data){
+						console.log(data);
+						if (data.status == 'success'){
+							console.log("success");
+							$('#success').text('Success');
+							$('#selectFrom').val('');
+							$('#selectTo').val('');
+							$('#departure').val('');
+							$('#arrival').val('');
+							$('#price').val('');
+							$('#seats').val('');
+
+						}
+					});
+					e.preventDefault();
+			});
+
+			
+	</script>
+	
+
 @endsection
