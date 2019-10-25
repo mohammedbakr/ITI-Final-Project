@@ -30,10 +30,10 @@
         Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
     -->
         <div class="logo">
-        <a href="{{route('home')}}" class="simple-text logo-mini">
+        <a href="{{route('index')}}" class="simple-text logo-mini">
           Go
         </a>
-        <a href="{{route('home')}}" class="simple-text logo-normal">
+        <a href="{{route('index')}}" class="simple-text logo-normal">
           {{ config('app.name', 'Laravel') }}
         </a>
       </div>
@@ -46,25 +46,6 @@
               <p>Dashboard</p>
             </a>
           </li>
-
-         <!-- <li>
-            <a href="./icons.html">
-              <i class="now-ui-icons education_atom"></i>
-              <p>Icons</p>
-            </a>
-          </li>
-          <li>
-            <a href="./map.html">
-              <i class="now-ui-icons location_map-big"></i>
-              <p>Maps</p>
-            </a>
-          </li>
-          <li>
-            <a href="./notifications.html">
-              <i class="now-ui-icons ui-1_bell-53"></i>
-              <p>Notifications</p>
-            </a>
-          </li> -->
 
           @hasrole(['admin'])
             <li class="{{ 'admin/users' == request()->path() ? 'active' : '' }} ">
@@ -110,13 +91,33 @@
             @yield('form')
 
             <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <i class="now-ui-icons ui-1_bell-53"></i>
-                  <p>
-                    <span class="d-lg-none d-md-block">Notifications</span>
-                  </p>
+              <li class="nav-item dropdown">
+                <a id="navbarDropdownMenuLink" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="now-ui-icons ui-1_bell-53"></i>
+                    @if(auth()->user()->unreadNotifications->count())
+                      <span class="badge badge-primary">{{auth()->user()->unreadNotifications->count()}}</span>
+                    @endif
+                    <p>
+                      <span class="d-lg-none d-md-block">Notifications</span>
+                    </p>
                 </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="{{ route('admin.markRead') }}">
+                      Mark all ss Read
+                    </a>
+                  @foreach (auth()->user()->unreadNotifications as $notify)
+                    <a class="dropdown-item bg-light text-info" href="#">
+                      {{$notify->data['data']}}<br>
+                      {{$notify->created_at->diffForHumans()}}
+                    </a>
+                    @endforeach
+                    @foreach (auth()->user()->readNotifications as $notify)
+                    <a class="dropdown-item" href="#">
+                      {{$notify->data['data']}}<br>
+                      {{$notify->created_at->diffForHumans()}}
+                    </a>
+                    @endforeach  
+                </div>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">
