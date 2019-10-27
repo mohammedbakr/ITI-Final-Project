@@ -23,7 +23,7 @@
 
 												<p class="alert alert-success" id="success"></p>
 
-												<input type="hidden" id="flightId">
+												<input type="hidden" id="flightId" display="none">
 												
 												<div class="form-group">
 												  <div class="row mb-3">

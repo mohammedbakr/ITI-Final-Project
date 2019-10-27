@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Notifications\DatabaseNotify;
-use App\User;
+use App\Flight;
 
 class HomeController extends Controller
 {
@@ -26,12 +25,8 @@ class HomeController extends Controller
     public function index()
     {
 
-        $admin = User::find(1);
-        $admin->notify( new DatabaseNotify);
+        $starts = Flight::select('from')->groupBy('from')->pluck('from');
 
-        $author = User::find(2);
-        $author->notify( new DatabaseNotify);
-
-        return view('pages.index');
+        return view('pages.index', compact('starts'));
     }
 }
