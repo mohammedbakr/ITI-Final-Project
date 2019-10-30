@@ -35,10 +35,13 @@
 	<link rel="stylesheet" href="css/owl.theme.default.min.css">
 
 	<!-- Theme style  -->
-	<link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css">
+    
+    <link rel="stylesheet" href="fonts/fontawesome.min.css">
+    <link rel="stylesheet" href="fonts/all.min.css">
 
 	<!-- Modernizr JS -->
-	<script src="js/modernizr-2.6.2.min.js"></script>
+    <script src="js/modernizr-2.6.2.min.js"></script>
 </head>
 <body>
     <div class="gtco-loader"></div>
@@ -215,7 +218,10 @@
 	<script src="js/bootstrap-datepicker.min.js"></script>
 
 	<!-- Main -->
-	<script src="js/main.js"></script>
+    <script src="js/main.js"></script>
+    
+    <script src="js/fontawesome.min.js"></script>
+    <script src="js/all.js"></script>
 
     @yield('script')
 	</body>

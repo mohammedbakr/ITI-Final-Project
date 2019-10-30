@@ -33,10 +33,12 @@ Route::namespace('Admin')->prefix('admin')->middleware(['auth', 'admin'])->name(
 });
 
 // Home Page
-Route::get('/', 'Users\FlightsController@index')->name('index');
-Route::get('/dests', 'Users\FlightsController@destination')->name('dests');
-Route::get('/deps', 'Users\FlightsController@departure')->name('deps');
-Route::post('/data', 'Users\FlightsController@store')->name('data');
+Route::get('/', 'DynamicDependentController@index')->name('index');
+Route::post('/fetch', 'DynamicDependentController@fetch')->name('index.fetch');
+// Route::get('/', 'Users\FlightsController@index')->name('index');
+// Route::get('/dests', 'Users\FlightsController@destination')->name('dests');
+// Route::get('/deps', 'Users\FlightsController@departure')->name('deps');
+// Route::post('/data', 'Users\FlightsController@store')->name('data');
 
 Route::middleware('verified')->group(function(){
 

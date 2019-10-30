@@ -1,6 +1,54 @@
 @extends('layouts.app')
 
-@section('content')	
+@section('content')
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h5 class="modal-title" id="exampleModalLabel">Payment</h5>
+		  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		  </button>
+		</div>
+		<form action="#" method="POST">
+		  @csrf
+		  <div class="modal-body">
+			{{-- <label for="card">Accepted Cards</label>
+			<div id="card" class="">
+				<i class="fa fa-cc-visa" style="color:navy;"></i>
+				<i class="fa fa-cc-amex" style="color:blue;"></i>
+				<i class="fa fa-cc-mastercard" style="color:red;"></i>
+				<i class="fa fa-cc-discover" style="color:orange;"></i>
+			</div> --}}
+			<div class="form-group">
+				<label for="cname" class="col-form-label">Name on Card</label>
+				<input type="text" class="form-control" id="cname" name="cname" placeholder="John More Doe">
+			</div>
+			<div class="form-group">
+				<label for="ccnum" class="col-form-label">Credit card number</label>
+				<input type="text" class="form-control" id="ccnum" name="ccnum" placeholder="1111-2222-3333-4444">
+			</div>
+			<div class="form-group">
+				<label for="expmonth" class="col-form-label">Exp Month</label>
+				<input type="text" class="form-control" id="expmonth" name="expmonth"  placeholder="September">
+			</div>
+			<div class="form-group">
+				<label for="expyear" class="col-form-label">Exp Year</label>
+				<input type="text" class="form-control" id="expyear" name="expyear" placeholder="2022">
+			</div>
+			<div class="form-group">
+				<label for="CVV" class="col-form-label">CVV</label>
+				<input type="text" class="form-control" id="CVV" name="CVV" placeholder="2022">
+			</div>
+		  </div>	  
+		  <div class="modal-footer">
+			<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			<button type="submit" class="btn btn-info">Add</button>
+		  </div>
+		</form>
+	  </div>
+	</div>
+  </div>
 	<header id="gtco-header" class="gtco-cover gtco-cover-md" role="banner" style="background-image: url(images/img_bg_2.jpg)">
 		<div class="overlay"></div>
 		<div class="gtco-container">
@@ -10,7 +58,7 @@
 
 					<div class="row row-mt-15em">
 						<div class="col-md-7 mt-text animate-box" data-animate-effect="fadeInUp">
-							
+							<h1>Planing Trip To Anywhere in The World?</h1>
 						</div>
 						<div class="col-md-4 col-md-push-1 animate-box" data-animate-effect="fadeInRight">
 							<div class="form-wrap">
@@ -20,123 +68,84 @@
 										<div class="tab-content-inner active" data-content="signup">
 											<h3>Book Your Trip</h3>
 											<form class="probootstrap-form" id="BookingForm">
-
-												<p class="alert alert-success" id="success"></p>
-
-												<input type="hidden" id="flightId" display="none">
-												
+												{{-- <p class="alert alert-success" id="success"></p>
+												<input type="hidden" id="flightId" display="none"> --}}
 												<div class="form-group">
-												  <div class="row mb-3">
-													
-													<div class="col-md">
-													  <div class="form-group">
-														<label for="id_label_single2">From</label>
-
-														<div class="probootstrap_select-wrap">
-														  <label for="from" style="width: 100%;">
-														  <select class="js-example-basic-single js-states form-control" name="from" style="width: 100%;" id="selectFrom" >
-
-															<option value="">Select Start</option>
-
-														  	@foreach($starts as $start)
-																<option value="{{ $start }}">{{ $start }}</option>
-
-														  	@endforeach
-															
-														  </select>
-														</label>
-														</div>
-													  </div>
-													</div>
-
-													<div class="col-md">
-													  <div class="form-group">
-														<label for="to">To</label>
-
-														<div class="probootstrap_select-wrap">
-														  <label for="to" style="width: 100%;">
-															
-									
-																<select class="js-example-basic-single js-states form-control" name="to" style="width: 100%;" id="selectTo" >
-
-																</select>					  	
-															
-														  
-														</label>
-														</div>
-													  </div>
-													</div>
-													
-												  </div>
-												  <!-- END row -->
-												  <div class="row mb-5">
-													  {{-- departure --}}
+													<div class="row mb-3">
+														{{-- from --}}
 														<div class="col-md">
-														  <div class="form-group">
-															<label for="probootstrap-date-departure">Departure</label>
-															<div class="probootstrap-date-wrap">
-															  <span class="icon ion-calendar"></span> 
-															  <input type="text" id="departure" name="departure_date" class="form-control" placeholder="">
+														<div class="form-group">
+															<label for="id_label_single2">From</label>
+															<div class="probootstrap_select-wrap">
+															<select class="js-example-basic-single js-states form-control dynamic" data-dependent="to" name="from" style="width: 100%;" id="from" >
+																<option value="">Select from</option>
+																@foreach ($country_list as $country)
+																	<option value="{{$country->from}}">{{$country->from}}</option>
+																@endforeach														
+															</select>
 															</div>
-														  </div>
 														</div>
-														{{-- end of departure --}}
-
-														{{-- Arrival --}}
+														</div>
+														{{-- to --}}
 														<div class="col-md">
-														  <div class="form-group">
-															<label for="probootstrap-date-arrival">Arrival</label>
-															<div class="probootstrap-date-wrap">
-															  <span class="icon ion-calendar"></span> 
-															  <input type="text" id="arrival" name="arrival_date" class="form-control" placeholder="">
+															<div class="form-group">
+																<label for="id_label_single2">to</label>
+																<div class="probootstrap_select-wrap">
+																<select class="js-example-basic-single js-states form-control dynamic" data-dependent="departure_date" name="to" style="width: 100%;" id="to" >
+																	<option value="">Select to</option>															
+																</select>
+																</div>
 															</div>
-														  </div>
 														</div>
-														{{-- Arrival --}}
-
+														{{-- departure date --}}
+														<div class="col-md">
+															<div class="form-group">
+																<label for="id_label_single2">departure_date</label>
+																<div class="probootstrap_select-wrap">
+																<select class="js-example-basic-single js-states form-control dynamic" data-dependent="time" name="departure_date" style="width: 100%;" id="departure_date" >
+																	<option value="">Select departure_date</option>															
+																</select>
+																</div>
+															</div>
+														</div>
+														{{-- time --}}
+														<div class="col-md">
+															<div class="form-group">
+																<label for="id_label_single2">time</label>
+																<div class="probootstrap_select-wrap">
+																<select class="js-example-basic-single js-states form-control dynamic" data-dependent="arrival_date" name="time" style="width: 100%;" id="time" >
+																	<option value="">Select time</option>															
+																</select>
+																</div>
+															</div>
+														</div>
+														{{-- arrival date --}}
+														<div class="col-md">
+															<div class="form-group">
+																<label for="id_label_single2">arrival_date</label>
+																<div class="probootstrap_select-wrap">
+																<select class="js-example-basic-single js-states form-control dynamic" data-dependent="price" name="arrival_date" style="width: 100%;" id="arrival_date" >
+																	<option value="">Select arrival_date</option>															
+																</select>
+																</div>
+															</div>
+														</div>
 														{{-- price --}}
 														<div class="col-md">
-																<div class="form-group">
-																  <label for="probootstrap-date-arrival">Seat Price</label>
-																  <div class="probootstrap-date-wrap">
-																	<span class="icon ion-calendar"></span> 
-																	<input type="text" id="price" name="price" class="form-control" placeholder="">
-																  </div>
-																</div>
-														</div>
-													</div>
-												  <!-- END row -->
-												  <div class="row">
-														{{-- <div class="col-md">
 															<div class="form-group">
-																<label for="id_label_single">Adults</label>
-																<label for="adults" style="width: 100%;">
-																<input 
-																type="number" min="1" class="js-example-basic-single js-states form-control" name="adults" id="adults" style="width: 100%;">
-																			
-															</div>
-														</div> --}}
-														{{-- <div class="col-md">
-															<div class="form-group">
-																<label for="id_label_single">Children</label>
-																<label for="id_label_single" style="width: 100%;">
-																<input 
-																type="number" min="1" class="js-example-basic-single js-states form-control" name="children" id="children" style="width: 100%;">			
-																
-															</div>
-														</div> --}}
-														<div class="col-md">
-																<div class="form-group">
-																	<label for="id_label_single">Seats</label>
-																	<label for="seats" style="width: 100%;">
-																	<input 
-																	type="number" min="1" class="js-example-basic-single js-states form-control" name="seats" id="seats" style="width: 100%;">			
-																	
+																<label for="id_label_single2">price</label>
+																<div class="probootstrap_select-wrap">
+																<select class="js-example-basic-single js-states form-control" name="price" style="width: 100%;" id="price" >
+																	<option value="">Select price</option>															
+																</select>
 																</div>
+															</div>
 														</div>
 														<div class="col-md">
-														  <input type="submit" value="Submit" class="btn btn-primary btn-block" id="submit">
+															{{-- <button type="submit"class="btn btn-primary btn-block">Book Now</button> --}}
+															<button type="button" class="btn btn-info btn-block" data-toggle="modal" data-target="#exampleModal">Book Now</button>
 														</div>
+														{{ csrf_field() }}
 													</div>
 												</div>
 											</form>
@@ -305,8 +314,29 @@
 
 @section('script')
 
-	
 	<script>
+		$(document).ready(function(){
+
+			$('.dynamic').change(function(){
+				if($(this).val() !=''){
+					var select = $(this).attr('id');
+					var value = $(this).val();
+					var dependent = $(this).data('dependent');
+					var _token = $('input[name="_token"]').val();
+					$.ajax({
+						url:"{{route('index.fetch')}}",
+						method:"post",
+						data:{select:select, value:value, _token:_token, dependent:dependent},
+						success:function(result){
+							$('#'+dependent).html(result);
+						}
+					});
+				};
+			});
+		});
+	</script>
+	
+	{{-- <script>
 			$('#selectFrom').on('change', function () {
 				let from = $(this).val();
 				
@@ -354,7 +384,5 @@
 			});
 
 			
-	</script>
-	
-
+	</script> --}}
 @endsection
