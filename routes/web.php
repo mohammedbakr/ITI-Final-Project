@@ -1,5 +1,6 @@
 <?php
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,7 +35,10 @@ Route::namespace('Admin')->prefix('admin')->middleware(['auth', 'admin'])->name(
 
 // Home Page
 Route::get('/', 'DynamicDependentController@index')->name('index');
+Route::get('/returnFlight', 'DynamicDependentController@returnFlight')->name('returnFlight');
 Route::post('/fetch', 'DynamicDependentController@fetch')->name('index.fetch');
+Route::post('/store', 'DynamicDependentController@store')->name('store');
+
 // Route::get('/', 'Users\FlightsController@index')->name('index');
 // Route::get('/dests', 'Users\FlightsController@destination')->name('dests');
 // Route::get('/deps', 'Users\FlightsController@departure')->name('deps');

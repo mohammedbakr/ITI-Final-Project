@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Flight;
+use DB;
 
 class HomeController extends Controller
 {
@@ -25,8 +26,9 @@ class HomeController extends Controller
     public function index()
     {
 
-        $starts = Flight::select('from')->groupBy('from')->pluck('from');
+        // $starts = Flight::select('from')->groupBy('from')->pluck('from');
+        $country_list = DB::table('flights')->groupBy('from')->get();
 
-        return view('pages.index', compact('starts'));
+        return view('pages.index', compact('country_list'));
     }
 }

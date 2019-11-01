@@ -1,16 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<div class="modal-dialog" role="document">
-	  <div class="modal-content">
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+	  	<div class="modal-content">
 		<div class="modal-header">
 		  <h5 class="modal-title" id="exampleModalLabel">Payment</h5>
 		  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 			<span aria-hidden="true">&times;</span>
 		  </button>
 		</div>
-		<form action="#" method="POST">
+		<form id="creditForm">
 		  @csrf
 		  <div class="modal-body">
 			{{-- <label for="card">Accepted Cards</label>
@@ -29,26 +29,25 @@
 				<input type="text" class="form-control" id="ccnum" name="ccnum" placeholder="1111-2222-3333-4444">
 			</div>
 			<div class="form-group">
-				<label for="expmonth" class="col-form-label">Exp Month</label>
-				<input type="text" class="form-control" id="expmonth" name="expmonth"  placeholder="September">
-			</div>
-			<div class="form-group">
-				<label for="expyear" class="col-form-label">Exp Year</label>
-				<input type="text" class="form-control" id="expyear" name="expyear" placeholder="2022">
+				<label for="expdate" class="col-form-label">Exp Date</label>
+				<input type="text" class="form-control" id="expdate" name="expdate"  placeholder="YYYY/MM/DD">
 			</div>
 			<div class="form-group">
 				<label for="CVV" class="col-form-label">CVV</label>
 				<input type="text" class="form-control" id="CVV" name="CVV" placeholder="2022">
 			</div>
+			<div class="alert alert-danger print-error-msg" style="display:none">
+        		<ul></ul>
+    		</div>
 		  </div>	  
 		  <div class="modal-footer">
 			<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 			<button type="submit" class="btn btn-info">Add</button>
 		  </div>
 		</form>
-	  </div>
-	</div>
-  </div>
+		</div>
+		</div>
+  	</div>
 	<header id="gtco-header" class="gtco-cover gtco-cover-md" role="banner" style="background-image: url(images/img_bg_2.jpg)">
 		<div class="overlay"></div>
 		<div class="gtco-container">
@@ -68,8 +67,10 @@
 										<div class="tab-content-inner active" data-content="signup">
 											<h3>Book Your Trip</h3>
 											<form class="probootstrap-form" id="BookingForm">
-												{{-- <p class="alert alert-success" id="success"></p>
-												<input type="hidden" id="flightId" display="none"> --}}
+												
+												{{-- <p class="alert alert-success" id="success"></p> --}}
+												<input type="hidden" id="flightId" display="none" name="flight_id">
+												<input type="hidden" name="credit_id" id="creditId" display="none">
 												<div class="form-group">
 													<div class="row mb-3">
 														{{-- from --}}
@@ -142,10 +143,12 @@
 															</div>
 														</div>
 														<div class="col-md">
-															{{-- <button type="submit"class="btn btn-primary btn-block">Book Now</button> --}}
+
+															<!-- <button type="button" class="btn btn-primary btn-block" id="Book">Book</button> -->
+
 															<button type="button" class="btn btn-info btn-block" data-toggle="modal" data-target="#exampleModal">Book Now</button>
 														</div>
-														{{ csrf_field() }}
+														
 													</div>
 												</div>
 											</form>
@@ -315,7 +318,7 @@
 @section('script')
 
 	<script>
-		$(document).ready(function(){
+		
 
 			$('.dynamic').change(function(){
 				if($(this).val() !=''){
@@ -333,56 +336,76 @@
 					});
 				};
 			});
-		});
-	</script>
-	
-	{{-- <script>
-			$('#selectFrom').on('change', function () {
-				let from = $(this).val();
-				
-				$.get('{{route("dests")}}?from='+from, function(res) {
-					let ops = '<option value="0">Select Destination</option>';
-					for (let i=0; i <res.length; i++){
-						ops += '<option value="'+res[i]+'">'+res[i]+'</option>';
-					}
-					$('#selectTo').html(ops);
-				});
-
-				
-			});
 
 
-			$('#selectTo').on('change', function () {
+			$('#to').on('change', function () {
 				let to = $(this).val();
-				let from = $('#selectFrom').val();
-				$.get('{{route("deps")}}?from='+from+'&to='+to, function(res){
-					$('#departure').val(res.departure_date + ' : ' + res.time);
-					$('#arrival').val(res.arrival_date);
-					$('#price').val(res.price);
+				let from = $('#from').val();
+				$.get('{{route("returnFlight")}}?from='+from+'&to='+to, function(res){
+					
 					$('#flightId').val(res.id);
 				})
 
 			});
 
-			$('#BookingForm').submit(function(e){
-					$.post("{{route('data')}}", {'seats':$('input[name=seats]').val(), 'flight_id':$('#flightId').val()}
-					).done(function(data){
-						console.log(data);
-						if (data.status == 'success'){
-							console.log("success");
-							$('#success').text('Success');
-							$('#selectFrom').val('');
-							$('#selectTo').val('');
-							$('#departure').val('');
-							$('#arrival').val('');
-							$('#price').val('');
-							$('#seats').val('');
-
-						}
-					});
-					e.preventDefault();
-			});
 
 			
-	</script> --}}
-@endsection
+
+			$('#creditForm').submit(function(e){
+				
+				$.ajax({
+					url: "{{ route('store') }}",
+					type: 'POST',
+					data: {
+						_token:$("input[name='_token']").val(),
+						'cname':$('#cname').val(),
+						'ccnum':$('#ccnum').val(),
+						'expdate':$('#expdate').val(),
+						'CVV':$('#CVV').val(),
+						'flight_id': $('#flightId').val()
+					},
+					dataType: 'json',
+					success: function(data){
+
+						$('#exampleModal').modal('hide');
+							
+						$('#from').val('');
+						$('#to').val('');
+						$('#departure_date').val('');
+						$('#time').val('');
+						$('#arrival_date').val('');
+						$('#price').val('');
+
+					},
+
+					error: function(err){
+
+						if(err.status == 422){
+
+							printErrorMsg(err.responseJSON);
+						}
+					}
+
+				});			
+					
+
+				e.preventDefault();
+
+			});
+
+
+			function printErrorMsg (msg) {
+	            $(".print-error-msg").find("ul").html('');
+	            $(".print-error-msg").css('display','block');
+	            $.each(msg, function(key, value ) {
+	               for(let i = 0; i<Object.keys(msg).length; i++){
+	               		$(".print-error-msg").find("ul").append('<li>'+value+'</li>');
+	               }
+	            });
+        	}
+
+		
+	</script>
+	
+	 
+ @endsection

@@ -65,7 +65,4 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->belongsToMany('App\Flight');
     }
 
-    public function history(){
-        return $this->hasOne('App\History');
-    }
 }

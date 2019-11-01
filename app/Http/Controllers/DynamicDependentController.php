@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use App\Flight;
+use App\Booking;
+use App\Credit;
+use Illuminate\Support\Facades\Auth;
+
 
 class DynamicDependentController extends Controller
 {
@@ -39,4 +44,52 @@ class DynamicDependentController extends Controller
 
         echo $output;
     }
+
+
+    function returnFlight(Request $request){
+        $from = $request->input('from');
+        $to = $request->input('to');
+        if (! $from ){
+            abort(404);
+         }
+
+         $flight = Flight::where(['from'=>$from, 'to'=>$to])->first();
+
+         return $flight;
+    }
+
+    function store(Request $request){
+
+
+            $this->validate($request, [
+                'cname' => 'required|string',
+                'ccnum' => 'required|integer',
+                'expdate' => 'required|date',
+                'CVV' => 'required|integer'
+            ]);
+
+            $credit = new Credit;
+            $credit->cname = $request->cname;
+            $credit->ccnum = $request->ccnum;
+            $credit->expdate = $request->expdate;
+            $credit->CVV = $request->CVV;
+            $credit->user_id = Auth::user()->id;
+
+            $credit->save();
+
+
+
+
+         $book = new Booking;
+         $book->flight_id = $request->flight_id;
+         $book->user_id = Auth::user()->id;
+         $book->credit_id = $credit->id;
+
+         $book->save();
+         
+
+         return response()->json(['success' => 'Credit Added Successfuly' , 'id' => $credit->id ]);
+
+    }
+
 }
