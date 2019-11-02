@@ -49,11 +49,12 @@ class DynamicDependentController extends Controller
     function returnFlight(Request $request){
         $from = $request->input('from');
         $to = $request->input('to');
+        $departure_date = $request->input('departure_date');
         if (! $from ){
             abort(404);
          }
 
-         $flight = Flight::where(['from'=>$from, 'to'=>$to])->first();
+         $flight = Flight::where(['from'=>$from, 'to'=>$to, 'departure_date'=>$departure_date])->first();
 
          return $flight;
     }

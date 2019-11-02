@@ -19,7 +19,7 @@ class CreateFlightsTable extends Migration
             $table->string('to');
             $table->date('departure_date');
             $table->time('time');
-            $table->date('arrival_date')->nullable();
+            $table->date('arrival_date');
             $table->integer('price');
             $table->unsignedInteger('available_seats');
             $table->string('airline_name')->default('bla');

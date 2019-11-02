@@ -34,7 +34,7 @@
 			</div>
 			<div class="form-group">
 				<label for="CVV" class="col-form-label">CVV</label>
-				<input type="text" class="form-control" id="CVV" name="CVV" placeholder="2022">
+				<input type="text" class="form-control" id="CVV" name="CVV" placeholder="985">
 			</div>
 			<div class="alert alert-danger print-error-msg" style="display:none">
         		<ul></ul>
@@ -42,7 +42,7 @@
 		  </div>	  
 		  <div class="modal-footer">
 			<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-			<button type="submit" class="btn btn-info">Add</button>
+			<button type="submit" class="btn btn-info">Submit</button>
 		  </div>
 		</form>
 		</div>
@@ -338,10 +338,11 @@
 			});
 
 
-			$('#to').on('change', function () {
-				let to = $(this).val();
+			$('#departure_date').on('change', function () {
+				let departure_date = $(this).val();
+				let to = $('#to').val();
 				let from = $('#from').val();
-				$.get('{{route("returnFlight")}}?from='+from+'&to='+to, function(res){
+				$.get('{{route("returnFlight")}}?from='+from+'&to='+to+'&departure_date='+departure_date, function(res){
 					
 					$('#flightId').val(res.id);
 				})

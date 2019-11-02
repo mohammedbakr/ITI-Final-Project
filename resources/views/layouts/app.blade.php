@@ -36,9 +36,6 @@
 
 	<!-- Theme style  -->
     <link rel="stylesheet" href="css/style.css">
-    
-    <link rel="stylesheet" href="fonts/fontawesome.min.css">
-    <link rel="stylesheet" href="fonts/all.min.css">
 
 	<!-- Modernizr JS -->
     <script src="js/modernizr-2.6.2.min.js"></script>
@@ -219,9 +216,6 @@
 
 	<!-- Main -->
     <script src="js/main.js"></script>
-    
-    <script src="js/fontawesome.min.js"></script>
-    <script src="js/all.js"></script>
 
     @yield('script')
 	</body>
