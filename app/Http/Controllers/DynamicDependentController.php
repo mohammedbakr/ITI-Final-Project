@@ -66,14 +66,14 @@ class DynamicDependentController extends Controller
                 'cname' => 'required|string',
                 'ccnum' => 'required|integer',
                 'expdate' => 'required|date',
-                'CVV' => 'required|integer'
+                'cvv' => 'required|integer'
             ]);
 
             $credit = new Credit;
             $credit->cname = $request->cname;
             $credit->ccnum = $request->ccnum;
             $credit->expdate = $request->expdate;
-            $credit->CVV = $request->CVV;
+            $credit->cvv = $request->cvv;
             $credit->user_id = Auth::user()->id;
 
             $credit->save();

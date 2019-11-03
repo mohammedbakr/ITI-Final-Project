@@ -73,7 +73,7 @@
                                     </a>
 
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="{{ route('logout') }}"
+                                        <a class="dropdown-item" style="color: black !important;" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                                         document.getElementById('logout-form').submit();">
                                             {{ __('Logout') }}
@@ -110,7 +110,7 @@
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
                                     <label for="email" class="sr-only">Email</label>
-                                    <input type="email" class="form-control" id="email" placeholder="Your Email">
+                                    <input type="email" class="form-control" id="email" placeholder="Your Email" required>
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-6">

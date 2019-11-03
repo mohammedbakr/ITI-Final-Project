@@ -33,8 +33,8 @@
 				<input type="text" class="form-control" id="expdate" name="expdate"  placeholder="YYYY/MM/DD">
 			</div>
 			<div class="form-group">
-				<label for="CVV" class="col-form-label">CVV</label>
-				<input type="text" class="form-control" id="CVV" name="CVV" placeholder="985">
+				<label for="cvv" class="col-form-label">CVV</label>
+				<input type="text" class="form-control" id="cvv" name="cvv" placeholder="985">
 			</div>
 			<div class="alert alert-danger print-error-msg" style="display:none">
         		<ul></ul>
@@ -69,7 +69,7 @@
 											<form class="probootstrap-form" id="BookingForm">
 												
 												{{-- <p class="alert alert-success" id="success"></p> --}}
-												<input type="hidden" id="flightId" display="none" name="flight_id">
+												<input type="hidden" id="flight_id" display="none" name="flight_id">
 												<input type="hidden" name="credit_id" id="creditId" display="none">
 												<div class="form-group">
 													<div class="row mb-3">
@@ -344,7 +344,7 @@
 				let from = $('#from').val();
 				$.get('{{route("returnFlight")}}?from='+from+'&to='+to+'&departure_date='+departure_date, function(res){
 					
-					$('#flightId').val(res.id);
+					$('#flight_id').val(res.id);
 				})
 
 			});
@@ -356,14 +356,14 @@
 				
 				$.ajax({
 					url: "{{ route('store') }}",
-					type: 'POST',
+					method: 'POST',
 					data: {
 						_token:$("input[name='_token']").val(),
 						'cname':$('#cname').val(),
 						'ccnum':$('#ccnum').val(),
 						'expdate':$('#expdate').val(),
-						'CVV':$('#CVV').val(),
-						'flight_id': $('#flightId').val()
+						'cvv':$('#cvv').val(),
+						'flight_id': $('#flight_id').val()
 					},
 					dataType: 'json',
 					success: function(data){

@@ -18,7 +18,7 @@ class CreateCreditsTable extends Migration
             $table->string('cname');
             $table->unsignedBigInteger('ccnum')->unique();
             $table->date('expdate');
-            $table->unsignedInteger('CVV');
+            $table->unsignedInteger('cvv');
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
 
