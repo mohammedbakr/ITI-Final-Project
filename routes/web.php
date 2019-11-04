@@ -39,10 +39,6 @@ Route::get('/returnFlight', 'DynamicDependentController@returnFlight')->name('re
 Route::post('/fetch', 'DynamicDependentController@fetch')->name('index.fetch');
 Route::post('/store', 'DynamicDependentController@store')->name('store');
 
-// Route::get('/', 'Users\FlightsController@index')->name('index');
-// Route::get('/dests', 'Users\FlightsController@destination')->name('dests');
-// Route::get('/deps', 'Users\FlightsController@departure')->name('deps');
-// Route::post('/data', 'Users\FlightsController@store')->name('data');
 
 Route::middleware('verified')->group(function(){
 

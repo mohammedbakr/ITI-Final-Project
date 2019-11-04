@@ -49,6 +49,7 @@ class FlightsController extends Controller
             'from' => 'required',
             'to' => 'required',
             'departure_date' => 'required | date' ,
+            'arrival_date' => 'required | date',
             'time' => 'required',
             'price' => 'required',
 
@@ -98,6 +99,7 @@ class FlightsController extends Controller
             'from' => 'required',
             'to' => 'required',
             'departure_date' => 'required | date' ,
+            'arrival_date' => 'required | date',
             'time' => 'required',
             'price' => 'required',
             'available_seats' => 'required',

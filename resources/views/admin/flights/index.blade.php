@@ -94,7 +94,7 @@
                 <th>Time</th>
                 <th>Arrival Date</th>
                 <th>Price</th>
-                <th>available_seats</th>
+                <th>Available Seats</th>
                 
                 <th>Edit</th>
                 <th>Delete</th>
@@ -110,8 +110,8 @@
                   <td>{{$flights->departure_date}}</td>
                   <td>{{$flights->time}}</td>
                   <td>{{$flights->arrival_date}}</td>
-                  <td>{{$flights->price}}$</td>   
-                  <td>{{100 - $flights->used_seats()}}</td>
+                  <td>{{$flights->price}}$</td>
+                  <td>{{$flights->available_seats - $flights->used_seats()}}</td>
                   <td>
                     <a href="{{ route('admin.flights.edit', $flights->id) }}" class="btn btn-success btn-sm">EDIT</a>
                   </td>

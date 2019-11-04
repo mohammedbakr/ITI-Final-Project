@@ -101,7 +101,11 @@
                       <span class="d-lg-none d-md-block">Notifications</span>
                     </p>
                 </a>
+<<<<<<< HEAD
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink" style="height:300px;overflow:hidden; overflow-y:scroll">
+=======
+                <div class="dropdown-menu dropdown-menu-right" style="height: 300px; overflow: hidden; overflow-y: scroll" aria-labelledby="navbarDropdownMenuLink">
+>>>>>>> 570f8ac2705882a6ba434fa89417e1d79993e560
                     <a class="dropdown-item" href="{{ route('admin.markRead') }}">
                       Mark all ss Read
                     </a>

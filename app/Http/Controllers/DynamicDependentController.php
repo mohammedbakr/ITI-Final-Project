@@ -49,11 +49,12 @@ class DynamicDependentController extends Controller
     function returnFlight(Request $request){
         $from = $request->input('from');
         $to = $request->input('to');
+        $departure_date = $request->input('departure_date');
         if (! $from ){
             abort(404);
          }
 
-         $flight = Flight::where(['from'=>$from, 'to'=>$to])->first();
+         $flight = Flight::where(['from'=>$from, 'to'=>$to, 'departure_date'=>$departure_date])->first();
 
          return $flight;
     }
@@ -65,14 +66,14 @@ class DynamicDependentController extends Controller
                 'cname' => 'required|string',
                 'ccnum' => 'required|integer',
                 'expdate' => 'required|date',
-                'CVV' => 'required|integer'
+                'cvv' => 'required|integer'
             ]);
 
             $credit = new Credit;
             $credit->cname = $request->cname;
             $credit->ccnum = $request->ccnum;
             $credit->expdate = $request->expdate;
-            $credit->CVV = $request->CVV;
+            $credit->cvv = $request->cvv;
             $credit->user_id = Auth::user()->id;
 
             $credit->save();
