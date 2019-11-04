@@ -42,7 +42,7 @@
 		  </div>	  
 		  <div class="modal-footer">
 			<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-			<button type="submit" class="btn btn-info">Add</button>
+			<button type="submit" class="btn btn-info">Submit</button>
 		  </div>
 		</form>
 		</div>
@@ -165,7 +165,7 @@
 	
 	<div class="gtco-section" id="trips">
 		<div class="gtco-container">
-			<div class="row">
+			<div class="row" >
 				<div class="col-md-8 col-md-offset-2 text-center gtco-heading">
 					<h2>Most Popular Destination</h2>
 					<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
@@ -376,13 +376,15 @@
 						$('#arrival_date').val('');
 						$('#price').val('');
 
+						alert('click ok to save your flight successfully');
+
 					},
 
 					error: function(err){
 
 						if(err.status == 422){
 
-							printErrorMsg(err.responseJSON);
+							printErrorMsg(err.responseJSON.errors);
 						}
 					}
 
@@ -397,11 +399,11 @@
 			function printErrorMsg (msg) {
 	            $(".print-error-msg").find("ul").html('');
 	            $(".print-error-msg").css('display','block');
-	            $.each(msg, function(key, value ) {
-	               for(let i = 0; i<Object.keys(msg).length; i++){
-	               		$(".print-error-msg").find("ul").append('<li>'+value+'</li>');
-	               }
-	            });
+	            
+
+	            for( let prop in msg ){
+    				$(".print-error-msg").find("ul").append('<li>'+msg[prop]+'</li>');
+				}	
         	}
 
 		

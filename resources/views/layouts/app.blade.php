@@ -57,7 +57,7 @@
                     </div>
                     <div class="col-xs-8 text-right menu-1">
                         <ul>
-                            <li><a href="/#trips">Trips</a></li>
+                            <li><a href="{{ route('index') }}#trips">Trips</a></li>
                             <li><a href="#aboutus">About</a></li>
                             <li><a href="{{ route('contact')}}">Contact</a></li>
                             @guest

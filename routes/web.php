@@ -49,4 +49,5 @@ Route::middleware('verified')->group(function(){
 	// contact page
 	Route::get('/contact', 'pagesController@contact')->name('contact');
 	
+	Route::post('/contact', 'pagesController@store')->name('contactUs');
 });

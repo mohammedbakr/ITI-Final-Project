@@ -7,7 +7,7 @@ use App\Booking;
 class Flight extends Model
 {
 	
-    public $fillable = ['from', 'to', 'departure_date', 'arrival_date', 'time', 'price', 'available_seats'];
+    public $fillable = ['from', 'to', 'departure_date', 'arrival_date', 'time', 'price'];
 
     public function flight_details(){
     	return $this->hasMany('App\Flight_Detail');

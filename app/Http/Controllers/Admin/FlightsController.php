@@ -51,12 +51,8 @@ class FlightsController extends Controller
             'departure_date' => 'required | date' ,
             'time' => 'required',
             'price' => 'required',
-            'available_seats' => 'required',
 
         ]);
-
-        $booking = new Booking;
-        $seats = $booking->seats;
 
         $flight = new Flight;
         $flight->from = $request->input('from');
@@ -65,7 +61,7 @@ class FlightsController extends Controller
         $flight->time = $request->input('time');
         $flight->price = $request->input('price');
         $flight->arrival_date = $request->input('arrival_date');
-        $flight->available_seats = $request->input('available_seats');
+        $flight->available_seats = $flight->available_seats - $flight->used_seats();
 
         $flight->save();
 

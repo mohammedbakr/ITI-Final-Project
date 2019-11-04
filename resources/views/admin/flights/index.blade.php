@@ -61,10 +61,10 @@
                   <label for="price" class="col-form-label">PRICE:</label>
                   <input type="text" class="form-control" id="price" name="price">
                 </div>
-                <div class="form-group">
+                <!-- <div class="form-group">
                   <label for="available_seats" class="col-form-label">AVAILABLE SEATS:</label>
                   <input type="text" class="form-control" id="available_seats" name="available_seats">
-                </div>
+                </div> -->
                 
             </div>
             <div class="modal-footer">

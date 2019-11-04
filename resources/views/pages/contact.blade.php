@@ -28,11 +28,12 @@
 				<div class="col-md-12">
 					<div class="col-md-6 animate-box">
 					<h3>Get In Touch</h3>
-					<form action="#">
+					<form action="{{ route('contactUs') }}" method="post">
+						@csrf
 						<div class="row form-group">
 							<div class="col-md-12">
 								<label class="sr-only" for="name">Name</label>
-								<input type="text" id="name" class="form-control" placeholder="Your firstname">
+								<input type="text" id="name" class="form-control" placeholder="Your firstname" name="name">
 							</div>
 							
 						</div>
@@ -40,21 +41,21 @@
 						<div class="row form-group">
 							<div class="col-md-12">
 								<label class="sr-only" for="email">Email</label>
-								<input type="text" id="email" class="form-control" placeholder="Your email address">
+								<input type="text" id="email" class="form-control" placeholder="Your email address" name="email">
 							</div>
 						</div>
 
 						<div class="row form-group">
 							<div class="col-md-12">
 								<label class="sr-only" for="subject">Subject</label>
-								<input type="text" id="subject" class="form-control" placeholder="Your subject of this message">
+								<input type="text" id="subject" class="form-control" placeholder="Your subject of this message" name="subject">
 							</div>
 						</div>
 
 						<div class="row form-group">
 							<div class="col-md-12">
 								<label class="sr-only" for="message">Message</label>
-								<textarea name="message" id="message" cols="30" rows="10" class="form-control" placeholder="Write us something"></textarea>
+								<textarea name="message" id="message" cols="30" rows="10" class="form-control" placeholder="Write us something" name="message"></textarea>
 							</div>
 						</div>
 						<div class="form-group">
@@ -80,3 +81,5 @@
 		</div>
 	</div>
 @endsection
+
+

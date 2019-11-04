@@ -12,4 +12,5 @@ class Booking extends Model
     public function credit(){
     	return $this->hasOne('App\Credit');
     }
+
 }
