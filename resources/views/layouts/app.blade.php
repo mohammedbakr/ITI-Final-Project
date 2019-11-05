@@ -56,7 +56,7 @@
                         <ul>
                             <li><a href="{{ route('index') }}#trips">Trips</a></li>
                             <li><a href="#aboutus">About</a></li>
-                            <li><a href="{{ route('contact')}}">Contact</a></li>
+                            <li><a href="{{ route('contact') }}">Contact</a></li>
                             @guest
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
