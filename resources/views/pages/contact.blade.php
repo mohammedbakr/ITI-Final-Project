@@ -33,7 +33,7 @@
 						<div class="row form-group">
 							<div class="col-md-12">
 								<label class="sr-only" for="name">Name</label>
-								<input type="text" id="name" class="form-control" placeholder="Your firstname" name="name">
+								<input type="text" id="name" class="form-control" placeholder="Your firstname" name="name" required>
 							</div>
 							
 						</div>
@@ -41,21 +41,21 @@
 						<div class="row form-group">
 							<div class="col-md-12">
 								<label class="sr-only" for="email">Email</label>
-								<input type="text" id="email" class="form-control" placeholder="Your email address" name="email">
+								<input type="text" id="email" class="form-control" placeholder="Your email address" name="email" required>
 							</div>
 						</div>
 
 						<div class="row form-group">
 							<div class="col-md-12">
 								<label class="sr-only" for="subject">Subject</label>
-								<input type="text" id="subject" class="form-control" placeholder="Your subject of this message" name="subject">
+								<input type="text" id="subject" class="form-control" placeholder="Your subject of this message" name="subject" required>
 							</div>
 						</div>
 
 						<div class="row form-group">
 							<div class="col-md-12">
 								<label class="sr-only" for="message">Message</label>
-								<textarea name="message" id="message" cols="30" rows="10" class="form-control" placeholder="Write us something" name="message"></textarea>
+								<textarea name="message" id="message" cols="30" rows="10" class="form-control" placeholder="Write us something" required name="message"></textarea>
 							</div>
 						</div>
 						<div class="form-group">
