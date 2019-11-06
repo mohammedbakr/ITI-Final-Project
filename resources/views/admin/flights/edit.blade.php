@@ -41,10 +41,10 @@
                                 <label>PRICE</label>
                                 <input type="text" name="price" value="{{ $flight->price }}" class="form-control">
                             </div>
-                            <!-- <div class="form-group">
+                            <div class="form-group">
                                 <label>AVAILABLE SEATS</label>
                                 <input type="text" name="available_seats" value="{{ $flight->available_seats }}" class="form-control">
-                            </div>                       -->
+                            </div>
                             <button type="submit" class="btn btn-success float-left">Update</button>
                         </form>
                         <form class="form-group" action="{{ route('admin.flights.index')}}" method="post">

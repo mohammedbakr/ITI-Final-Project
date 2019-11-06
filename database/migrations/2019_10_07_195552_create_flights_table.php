@@ -21,7 +21,7 @@ class CreateFlightsTable extends Migration
             $table->time('time');
             $table->date('arrival_date');
             $table->integer('price');
-            $table->unsignedInteger('available_seats')->default(100);
+            $table->unsignedInteger('available_seats');
             $table->string('airline_name')->default('bla');
             $table->timestamps();
         });

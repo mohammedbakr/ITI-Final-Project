@@ -30,7 +30,7 @@
 			</div>
 			<div class="form-group">
 				<label for="expdate" class="col-form-label">Exp Date</label>
-				<input type="text" class="form-control" id="expdate" name="expdate"  placeholder="YYYY/MM/DD">
+				<input type="text" class="form-control" id="expdate" name="expdate" placeholder="YYYY/MM/DD" pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))">
 			</div>
 			<div class="form-group">
 				<label for="cvv" class="col-form-label">CVV</label>

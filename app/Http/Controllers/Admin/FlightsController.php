@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Flight;
-use App\Booking;
 
 class FlightsController extends Controller
 {
@@ -46,12 +45,13 @@ class FlightsController extends Controller
     {
         $request->validate([
 
-            'from' => 'required',
-            'to' => 'required',
-            'departure_date' => 'required | date' ,
-            'arrival_date' => 'required | date',
+            'from' => 'required|string',
+            'to' => 'required|string',
+            'departure_date' => 'required|date' ,
+            'arrival_date' => 'required|date',
             'time' => 'required',
-            'price' => 'required',
+            'price' => 'required|integer',
+            'available_seats' => 'required|integer',
 
         ]);
 
@@ -62,7 +62,7 @@ class FlightsController extends Controller
         $flight->time = $request->input('time');
         $flight->price = $request->input('price');
         $flight->arrival_date = $request->input('arrival_date');
-        $flight->available_seats = $flight->available_seats - $flight->used_seats();
+        $flight->available_seats = $request->input('available_seats');
 
         $flight->save();
 
@@ -96,13 +96,13 @@ class FlightsController extends Controller
     {
         $request->validate([
 
-            'from' => 'required',
-            'to' => 'required',
-            'departure_date' => 'required | date' ,
-            'arrival_date' => 'required | date',
+            'from' => 'required|string',
+            'to' => 'required|string',
+            'departure_date' => 'required|date' ,
+            'arrival_date' => 'required|date',
             'time' => 'required',
-            'price' => 'required',
-            'available_seats' => 'required',
+            'price' => 'required|integer',
+            'available_seats' => 'required|integer',
 
         ]);
 

@@ -7,7 +7,7 @@ use App\Booking;
 class Flight extends Model
 {
 	
-    public $fillable = ['from', 'to', 'departure_date', 'arrival_date', 'time', 'price'];
+    public $fillable = ['from', 'to', 'departure_date', 'arrival_date', 'time', 'price', 'available_seats'];
 
 
     public function users(){
