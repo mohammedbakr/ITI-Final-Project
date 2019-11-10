@@ -7,6 +7,7 @@ use DB;
 use App\Flight;
 use App\Booking;
 use App\Credit;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -72,7 +73,7 @@ class DynamicDependentController extends Controller
             $credit = new Credit;
             $credit->cname = $request->cname;
             $credit->ccnum = $request->ccnum;
-            $credit->expdate = $request->expdate;
+            $credit->expdate = Carbon::createFromFormat('m/d/Y', $request->input('expdate'))->format('Y-m-d');
             $credit->cvv = $request->cvv;
             $credit->user_id = Auth::user()->id;
 

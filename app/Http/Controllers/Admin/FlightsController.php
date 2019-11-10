@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Flight;
+use Carbon\Carbon;
 
 class FlightsController extends Controller
 {
@@ -43,6 +44,8 @@ class FlightsController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
+
         $request->validate([
 
             'from' => 'required|string',
@@ -58,10 +61,10 @@ class FlightsController extends Controller
         $flight = new Flight;
         $flight->from = $request->input('from');
         $flight->to = $request->input('to');
-        $flight->departure_date = $request->input('departure_date');
+        $flight->departure_date = Carbon::createFromFormat('m/d/Y', $request->input('departure_date'))->format('Y-m-d');
         $flight->time = $request->input('time');
         $flight->price = $request->input('price');
-        $flight->arrival_date = $request->input('arrival_date');
+        $flight->arrival_date = Carbon::createFromFormat('m/d/Y', $request->input('arrival_date'))->format('Y-m-d');
         $flight->available_seats = $request->input('available_seats');
 
         $flight->save();
@@ -107,7 +110,18 @@ class FlightsController extends Controller
         ]);
 
         $flight = Flight::find($id);
-        $flight->update($request->all());
+        $flight->from = $request->input('from');
+        $flight->to = $request->input('to');
+        $flight->departure_date = Carbon::createFromFormat('m/d/Y', $request->input('departure_date'))->format('Y-m-d');
+        $flight->time = $request->input('time');
+        $flight->price = $request->input('price');
+        $flight->arrival_date = Carbon::createFromFormat('m/d/Y', $request->input('arrival_date'))->format('Y-m-d');
+        $flight->available_seats = $request->input('available_seats');
+
+
+        $flight->update();
+
+        // $flight->update($request->all());
 
         return redirect()->route('admin.flights.index')->with('success', 'Flight Updated successfully');
     }

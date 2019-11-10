@@ -30,7 +30,7 @@
 			</div>
 			<div class="form-group">
 				<label for="expdate" class="col-form-label">Exp Date</label>
-				<input type="text" class="form-control" id="expdate" name="expdate" placeholder="YYYY/MM/DD" pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))">
+				<input type="text" class="form-control date" id="expdate" name="expdate" placeholder="MM/DD/YYYY">
 			</div>
 			<div class="form-group">
 				<label for="cvv" class="col-form-label">CVV</label>
@@ -407,7 +407,18 @@
 				}	
         	}
 
-		
+
+
+			// datepicker.....jquery-ui
+			$(".date").datepicker({
+			numberOfMonths: 1,
+			changeYear: true,
+			changeMonth: true,
+			showOtherMonths: true,
+			minDate: new Date(2019,10,20), // 10 means Nov cause Jan started with 0,
+			});
+
+
 	</script>
 	
 	 

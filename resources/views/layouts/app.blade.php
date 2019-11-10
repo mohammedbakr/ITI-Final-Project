@@ -32,7 +32,12 @@
 
 	<!-- Owl Carousel  -->
 	<link rel="stylesheet" href="css/owl.carousel.min.css">
-	<link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+
+    {{--Datepicker  --}}
+    <link href="{{asset('assets/css/jquery-ui.min.css')}}" rel="stylesheet" />
+    <link href="{{asset('assets/css/jquery-ui.structure.min.css')}}" rel="stylesheet" />
+    <link href="{{asset('assets/css/jquery-ui.theme.min.css')}}" rel="stylesheet" />
 
 	<!-- Theme style  -->
     <link rel="stylesheet" href="css/style.css">
@@ -212,7 +217,8 @@
 	<script src="js/magnific-popup-options.js"></script>
 
 	<!-- Datepicker -->
-	<script src="js/bootstrap-datepicker.min.js"></script>
+    <script src="js/bootstrap-datepicker.min.js"></script>
+    <script src="{{asset('assets/js/jquery-ui.min.js')}}"></script>
 
 	<!-- Main -->
     <script src="js/main.js"></script>
