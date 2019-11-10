@@ -106,9 +106,9 @@
                   <td>{{$flights->id}}</td>
                   <td>{{$flights->from}}</td>
                   <td>{{$flights->to}}</td>
-                  <td>{{$flights->departure_date}}</td>
+                  <td>{{$flights->departure_date->format('m/d/Y')}}</td>
                   <td>{{$flights->time}}</td>
-                  <td>{{$flights->arrival_date}}</td>
+                  <td>{{$flights->arrival_date->format('m/d/Y')}}</td>
                   <td>{{$flights->price}}$</td>
                   <td>{{$flights->available_seats - $flights->used_seats()}}</td>
                   <td>

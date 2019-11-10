@@ -7,8 +7,11 @@ use App\Booking;
 
 class Flight extends Model
 {
-
+    
     public $fillable = ['from', 'to', 'departure_date', 'arrival_date', 'time', 'price', 'available_seats'];
+
+
+    protected $dates = ['departure_date', 'arrival_date'];
     
 
     public function users(){

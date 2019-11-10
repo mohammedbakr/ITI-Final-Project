@@ -27,7 +27,7 @@
                             </div>
                             <div class="form-group">
                                 <label>DEPARTURE DATE</label>
-                                <input type="text" id="departure_date" name="departure_date" value="{{ $flight->departure_date }}" class="form-control date" placeholder="MM/DD/YYYY">
+                                <input type="text" id="departure_date" name="departure_date" value="{{ $flight->departure_date->format('m/d/Y') }}" class="form-control date" placeholder="MM/DD/YYYY">
                             </div>
                             <div class="form-group">
                                 <label>TIME</label>
@@ -35,7 +35,7 @@
                             </div>
                             <div class="form-group">
                                 <label>ARRIVAL DATE</label>
-                                <input type="text" id="arrival_date" name="arrival_date" value="{{ $flight->arrival_date }}" class="form-control date" placeholder="MM/DD/YYYY">
+                                <input type="text" id="arrival_date" name="arrival_date" value="{{ $flight->arrival_date->format('m/d/Y') }}" class="form-control date" placeholder="MM/DD/YYYY">
                             </div>
                             <div class="form-group">
                                 <label>PRICE</label>
