@@ -18,6 +18,11 @@ Auth::routes(['verify' => true]);
 Route::get('/home', 'HomeController@index')->name('home')->middleware(['auth' ,'verified']);
 
 
+// Github login
+Route::get('login/github', 'Auth\LoginController@redirectToProvider')->name('login/github');
+Route::get('login/github/callback', 'Auth\LoginController@handleProviderCallback');
+
+
 
 // admin dashboard
 Route::get('/admin', function(){

@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
+use Laravel\Socialite\Facades\Socialite;
+use App\User;
 
 class LoginController extends Controller
 {
@@ -26,7 +28,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    // protected $redirectTo = '/home';
+
     protected function redirectTo()
     {
         if(Auth::user()->hasRoles(['admin', 'author']))
@@ -46,5 +48,46 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    // Github Login
+    /**
+     * Redirect the user to the GitHub authentication page.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function redirectToProvider()
+    {
+        return Socialite::driver('github')->redirect();
+    }
+
+    /**
+     * Obtain the user information from GitHub.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function handleProviderCallback()
+    {
+        $githubUser = Socialite::driver('github')->user();
+
+        // dd($githubUser);
+
+        $user = User::where('provider_id', $githubUser->getId())->first();
+
+        if(!$user){
+            // add user to database
+            $user = User::create([
+                'email' => $githubUser->getEmail(),
+                'name' => $githubUser->getName(),
+                'provider_id' => $githubUser->getId(),
+                // 'provider' => 'twitter' or 'github' >>>> for many social login (provider)
+
+            ]);
+        }
+
+        // login the user
+        Auth::login($user, true);
+
+        return redirect('/home');
     }
 }
